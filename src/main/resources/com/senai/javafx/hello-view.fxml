@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" styleClass="root" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.senai.javafx.HelloController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <BorderPane prefHeight="146.0" prefWidth="300.0" styleClass="form-container">
+
+        <center>
+            <TextField fx:id="nomeField" prefHeight="13.0" prefWidth="300.0" promptText="Digite seu nome" BorderPane.alignment="CENTER" />
+        </center>
+      <bottom>
+         <TextField fx:id="idField" promptText="Digite seu ID" BorderPane.alignment="CENTER" />
+      </bottom>
+
+    </BorderPane>
+      <Button mnemonicParsing="false" onAction="#cadastrarPaciente" styleClass="primary-button" text="Cadastrar" />
+
+
+
+</VBox>
