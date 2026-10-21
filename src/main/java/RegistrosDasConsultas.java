@@ -1,6 +1,8 @@
-package PACKAGE_NAME;
 import javafx.application.Application;
 import javafx.stage.Stage;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class RegistrosDasConsultas extends Application {
 
@@ -10,6 +12,6 @@ public class RegistrosDasConsultas extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        
+
+      }
     }
-}
