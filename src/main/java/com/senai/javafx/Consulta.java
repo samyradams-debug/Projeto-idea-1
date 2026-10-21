@@ -18,6 +18,11 @@ public class Consulta {
                     "Informe médico, paciente e data."
             );
         }
+        if (id == null || id.trim().isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Informe o ID da consulta."
+            );
+        }
 
         this.id = id;
         this.medico = medico;
