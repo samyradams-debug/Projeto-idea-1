@@ -28,5 +28,7 @@
 
     <Button text="Cadastrar"
             onAction="#cadastrarPaciente"/>
-
+    
+    <Button text="Cadastrar Médico"
+            onAction="#abrirCadastroMedico"/>
 </VBox>

@@ -18,6 +18,21 @@ public class HelloController {
     private TextField idField;
 
     @FXML
+    private void abrirCadastroMedico() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("tela4.fxml")
+        );
+
+        Scene scene = new Scene(loader.load());
+
+        Stage stage = (Stage) nomeField.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Cadastro de Médicos");
+        stage.show();
+    }
+
+    @FXML
     private void cadastrarPaciente() {
 
         String nome = nomeField.getText().trim();
