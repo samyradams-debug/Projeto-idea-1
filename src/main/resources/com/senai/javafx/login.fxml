@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox alignment="CENTER"
+      spacing="14"
+      prefWidth="420"
+      prefHeight="570"
+      style="-fx-background-color: #f4f6f8;"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.senai.javafx.LoginController">
+
+
+    <padding>
+        <Insets top="25" right="35" bottom="25" left="35"/>
+    </padding>
+
+
+    <ImageView fitWidth="270"
+               fitHeight="210"
+               preserveRatio="true">
+        <image>
+            <Image url="@logo.jpg"/>
+        </image>
+    </ImageView>
+
+
+    <Label text="Acesso ao Sistema"
+           style="-fx-font-size: 22px;
+                  -fx-font-weight: bold;
+                  -fx-text-fill: #193b63;"/>
+
+
+    <TextField fx:id="usuarioField"
+               promptText="Nome de usuário"
+               maxWidth="Infinity"
+               style="-fx-background-color: white;
+                      -fx-border-color: #ced4da;
+                      -fx-border-radius: 6px;
+                      -fx-background-radius: 6px;
+                      -fx-padding: 12px;
+                      -fx-font-size: 14px;"/>
+
+
+    <PasswordField fx:id="senhaField"
+                   promptText="Digite sua senha"
+                   maxWidth="Infinity"
+                   style="-fx-background-color: white;
+                          -fx-border-color: #ced4da;
+                          -fx-border-radius: 6px;
+                          -fx-background-radius: 6px;
+                          -fx-padding: 12px;
+                          -fx-font-size: 14px;"/>
+
+
+    <Button text="ENTRAR"
+            onAction="#entrar"
+            maxWidth="Infinity"
+            style="-fx-background-color: #193b63;
+                   -fx-text-fill: white;
+                   -fx-font-weight: bold;
+                   -fx-padding: 12px;
+                   -fx-background-radius: 6px;
+                   -fx-cursor: hand;"/>
+
+
+    <Button text="Criar conta"
+            onAction="#abrirCadastro"
+            maxWidth="Infinity"
+            style="-fx-background-color: #198754;
+                   -fx-text-fill: white;
+                   -fx-font-weight: bold;
+                   -fx-padding: 10px;
+                   -fx-background-radius: 6px;
+                   -fx-cursor: hand;"/>
+
+
+    <Label text="Hospital Samyra &amp; Heloísa"
+           style="-fx-text-fill: #193b63;
+                  -fx-font-size: 12px;"/>
+
+
+</VBox>
