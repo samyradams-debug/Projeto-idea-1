@@ -1,3 +1,4 @@
+
 package com.senai.javafx;
 
 import java.util.Collection;
@@ -11,10 +12,14 @@ public class PacienteRepository {
 
     public static void cadastrar(Paciente paciente) {
 
+        if (paciente == null) {
+            throw new IllegalArgumentException(
+                    "Informe um paciente válido.");
+        }
+
         if (pacientes.containsKey(paciente.getId())) {
             throw new IllegalArgumentException(
-                    "Já existe um paciente cadastrado com esse ID."
-            );
+                    "Já existe um paciente cadastrado com esse ID.");
         }
 
         pacientes.put(paciente.getId(), paciente);

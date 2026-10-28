@@ -1,3 +1,4 @@
+
 package com.senai.javafx;
 
 public class Medico {
@@ -7,9 +8,17 @@ public class Medico {
     private final String especialidade;
 
     public Medico(String id, String nome, String especialidade) {
-        this.id = id;
-        this.nome = nome;
-        this.especialidade = especialidade;
+        if (id == null || id.isBlank()
+                || nome == null || nome.isBlank()
+                || especialidade == null
+                || especialidade.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Preencha o ID, nome e especialidade do médico.");
+        }
+
+        this.id = id.trim();
+        this.nome = nome.trim();
+        this.especialidade = especialidade.trim();
     }
 
     public String getId() {
@@ -22,5 +31,11 @@ public class Medico {
 
     public String getEspecialidade() {
         return especialidade;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - " + especialidade
+                + " (ID: " + id + ")";
     }
 }

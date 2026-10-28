@@ -1,6 +1,8 @@
+
 package com.senai.javafx;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Consulta {
 
@@ -13,18 +15,27 @@ public class Consulta {
     public Consulta(String id, Medico medico,
                     Paciente paciente, LocalDateTime dataHora) {
 
-        if (medico == null || paciente == null || dataHora == null) {
+        if (id == null || id.isBlank()) {
             throw new IllegalArgumentException(
-                    "Informe médico, paciente e data."
-            );
-        }
-        if (id == null || id.trim().isEmpty()) {
-            throw new IllegalArgumentException(
-                    "Informe o ID da consulta."
-            );
+                    "Informe o ID da consulta.");
         }
 
-        this.id = id;
+        if (medico == null) {
+            throw new IllegalArgumentException(
+                    "Selecione um médico cadastrado.");
+        }
+
+        if (paciente == null) {
+            throw new IllegalArgumentException(
+                    "Selecione um paciente cadastrado.");
+        }
+
+        if (dataHora == null) {
+            throw new IllegalArgumentException(
+                    "Informe a data e o horário.");
+        }
+
+        this.id = id.trim();
         this.medico = medico;
         this.paciente = paciente;
         this.dataHora = dataHora;
@@ -52,6 +63,23 @@ public class Consulta {
     }
 
     public void cancelar() {
+        if ("CANCELADA".equals(status)) {
+            throw new IllegalStateException(
+                    "Esta consulta já foi cancelada.");
+        }
+
         status = "CANCELADA";
+    }
+
+    public String formatarDataHora() {
+        return dataHora.format(
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+    }@Override
+    public String toString() {
+        return "Código: " + id
+                + " | " + formatarDataHora()
+                + " | Paciente: " + paciente.getNome()
+                + " | Médico: " + medico.getNome()
+                + " | Status: " + status;
     }
 }
