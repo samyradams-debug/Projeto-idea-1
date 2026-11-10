@@ -1,5 +1,6 @@
 package com.senai.javafx;
 
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,28 +18,27 @@ public class HelloController {
     @FXML
     private TextField idField;
 
+    // Abrir cadastro de médico
     @FXML
     private void abrirCadastroMedico() throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("tela4.fxml")
-        );
-
-        Scene scene = new Scene(loader.load());
-
         Stage stage = (Stage) nomeField.getScene().getWindow();
-        stage.setScene(scene);
-        stage.setTitle("Cadastro de Médicos");
-        stage.show();
+
+        Navegacao.abrirTela(
+                stage,
+                "tela4.fxml",
+                "Cadastro de Médicos"
+        );
     }
 
+    // Cadastrar paciente
     @FXML
     private void cadastrarPaciente() {
 
         String nome = nomeField.getText().trim();
         String id = idField.getText().trim();
 
-        // 1. Validar os campos
+        // Validar os campos
         if (nome.isEmpty() || id.isEmpty()) {
             mostrarAlerta(
                     "Campos obrigatórios",
@@ -47,11 +47,12 @@ public class HelloController {
             return;
         }
 
-        // 2. Criar o paciente
+        // Criar paciente
         Paciente paciente = new Paciente(id, nome);
 
-        // 3. Cadastrar e abrir a tela de confirmação
         try {
+
+            // Cadastrar paciente
             PacienteRepository.cadastrar(paciente);
 
             FXMLLoader loader = new FXMLLoader(
@@ -61,20 +62,26 @@ public class HelloController {
             Scene scene = new Scene(loader.load());
 
             Tela3Controller controller = loader.getController();
+
             controller.setDadosPaciente(
                     paciente.getNome(),
                     paciente.getId()
             );
 
+            // Abrir confirmação em tela cheia
             Stage stage = (Stage) nomeField.getScene().getWindow();
+
             stage.setScene(scene);
             stage.setTitle("Paciente cadastrado");
+            stage.setFullScreen(true);
             stage.show();
 
         } catch (IllegalArgumentException e) {
+
             mostrarAlerta("ID já cadastrado", e.getMessage());
 
         } catch (IOException e) {
+
             mostrarAlerta(
                     "Erro ao abrir a tela",
                     "Não foi possível abrir a tela de confirmação."
@@ -84,11 +91,15 @@ public class HelloController {
         }
     }
 
+    // Mostrar alertas
     private void mostrarAlerta(String titulo, String mensagem) {
+
         Alert alerta = new Alert(Alert.AlertType.WARNING);
+
         alerta.setTitle(titulo);
         alerta.setHeaderText(null);
         alerta.setContentText(mensagem);
+
         alerta.showAndWait();
     }
 }

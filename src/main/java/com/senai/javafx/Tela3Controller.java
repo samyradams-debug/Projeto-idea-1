@@ -1,3 +1,4 @@
+
 package com.senai.javafx;
 
 import javafx.fxml.FXML;
@@ -16,11 +17,14 @@ public class Tela3Controller {
     @FXML
     private Label idLabel;
 
+    // Mostrar os dados do paciente
     public void setDadosPaciente(String nome, String id) {
+
         nomeLabel.setText("Nome: " + nome);
         idLabel.setText("ID: " + id);
     }
 
+    // Voltar ao cadastro de pacientes
     @FXML
     private void voltarAoCadastro() throws IOException {
 
@@ -31,8 +35,12 @@ public class Tela3Controller {
         Scene scene = new Scene(loader.load());
 
         Stage stage = (Stage) nomeLabel.getScene().getWindow();
+
         stage.setScene(scene);
         stage.setTitle("Cadastro de Pacientes");
         stage.show();
+
+        // Manter tela cheia
+        stage.setFullScreen(true);
     }
 }
